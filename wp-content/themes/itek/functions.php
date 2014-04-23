@@ -358,17 +358,13 @@ function itek_internal_css() {
 		$header_repeat = " background-repeat: repeat-x;";
 		$header_position = " background-position: center top;";
 		$header_attachment = " background-attachment: scroll;";
-		$header_image_style = $header_image . $header_repeat . $header_position . $header_attachment;
-		if ( get_theme_mod( 'itek_headerimage_visibility' ) != 0 ) { ?>
+		$header_image_style = $header_image . $header_repeat . $header_position . $header_attachment; ?>
+		
 		<style type="text/css" id="custom-header-css">
 		#parallax-bg { <?php echo trim( $header_image_style ); ?> } #masthead { margin-bottom: <?php echo $height; ?>px; } 
 		</style>
-		<?php } elseif ( is_front_page() ) { ?>
-		<style type="text/css" id="custom-header-css">
-		#parallax-bg { <?php echo trim( $header_image_style ); ?> } #masthead { margin-bottom: <?php echo $height; ?>px; } 
-		</style>
-		<?php }
-	endif;
+
+	<?php endif;
 }
 add_action('wp_head', 'itek_internal_css');
 endif;

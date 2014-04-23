@@ -17,17 +17,31 @@
  * @package iTek
  */
 function itek_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'itek_custom_header_args', array(
-		'default-image'          => '%s/img/header.jpg',
-		'default-text-color'     => 'ffffff',
-		'width'                  => 1600,
-		'height'                 => 380,
-		'flex-width'				 => true,
-		'flex-height'            => true,
-		'wp-head-callback'       => 'itek_header_style',
-		'admin-head-callback'    => 'itek_admin_header_style',
-		'admin-preview-callback' => 'itek_admin_header_image',
-	) ) );
+	if (!has_post_thumbnail()) {
+		add_theme_support( 'custom-header', apply_filters( 'itek_custom_header_args', array(
+			'default-image'          => '%s/img/header.jpg',
+			'default-text-color'     => 'ffffff',
+			'width'                  => 1600,
+			'height'                 => 380,
+			'flex-width'				 => true,
+			'flex-height'            => true,
+			'wp-head-callback'       => 'itek_header_style',
+			'admin-head-callback'    => 'itek_admin_header_style',
+			'admin-preview-callback' => 'itek_admin_header_image',
+		) ) );
+	} else {
+		add_theme_support( 'custom-header', apply_filters( 'itek_custom_header_args', array(
+			'default-image'          => the_post_thumbnail(),
+			'default-text-color'     => 'ffffff',
+			'width'                  => 1600,
+			'height'                 => 380,
+			'flex-width'				 => true,
+			'flex-height'            => true,
+			'wp-head-callback'       => 'itek_header_style',
+			'admin-head-callback'    => 'itek_admin_header_style',
+			'admin-preview-callback' => 'itek_admin_header_image',
+		) ) );
+	}
 
 	/*
 	 * Default custom headers packaged with the theme.
