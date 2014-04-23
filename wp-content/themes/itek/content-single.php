@@ -15,9 +15,27 @@
 			<?php itek_posted_on(); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
-
 	<div class="entry-content">
 		<?php the_content(); ?>
+
+		<p><strong>Adresse :</strong> 
+			<?php 
+			echo get_field('adresse')[1] . ', ' . get_field('code_postal')[1] . ', ' . get_field('ville')[1];
+			?>
+		</p>
+
+		<p><strong>Telephone :</strong> 
+			<?php 
+			echo get_field('telephone')[1];
+			?>
+		</p>
+
+		<p><strong>Site web :</strong> 
+			<?php 
+			echo get_field('site_web')[1];
+			?>
+		</p>
+		
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links btn special">' . __( 'Pages: ', 'itek' ),
